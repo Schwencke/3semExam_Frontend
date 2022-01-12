@@ -15,7 +15,7 @@ function apiFacade() {
     return localStorage.getItem("jwtToken");
   };
   const loggedIn = () => {
-    const loggedIn = getToken() != null;
+    const loggedIn = getToken() !== null;
     return loggedIn;
   };
   const logout = () => {
@@ -74,7 +74,7 @@ function apiFacade() {
     try {
       const res = await fetch(URL + "/api/register/reg", options);
       const res_1 = await handleHttpErrors(res);
-      if (res_1.token != undefined) {
+      if (res_1.token !== undefined) {
         setToken(res_1.token);
       }
     } catch (err) {
@@ -92,7 +92,13 @@ function apiFacade() {
      return await fetch(URL + "/api/register/check", options)
         .then(handleHttpErrors)
         .then((data) => updateAction(data));
-    } catch (error) {}
+    } catch (err) {
+      if (err.status) {
+        err.fullError.then((e) => alert(e.code + ": " + e.message));
+      } else {
+        alert("network error");
+      }
+    }
   };
 
   const fetchData = (endpoint, updateAction) => {

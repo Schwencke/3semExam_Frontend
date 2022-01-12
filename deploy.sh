@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-PROJECT_NAME="ca2"
+PROJECT_NAME="exam"
 DROPLET_URL="164.90.231.187"
 
 echo "##############################"

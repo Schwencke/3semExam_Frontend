@@ -5,8 +5,10 @@ export default function CreateUser({ facade, handleModal}) {
     const [credentials, setCredentials] = useState(init);
     const [usernameExists, setUsernameExists] = useState(false)
     const doesUsernameExists = (data) => {
-        setUsernameExists(data.exists)
+        setUsernameExists(data)
     }
+
+
 
     const createUsr = (evt) => {
       evt.preventDefault();
@@ -20,7 +22,7 @@ export default function CreateUser({ facade, handleModal}) {
 
     useEffect(() => {
       facade.checkIfUsernameExists(credentials.username, doesUsernameExists)
-    }, [onChange])
+    }, [credentials])
   
     return (
       <div>
@@ -30,7 +32,7 @@ export default function CreateUser({ facade, handleModal}) {
           <input className="login-input"  placeholder="User Name" id="username"></input>
           <input className="login-input"  type="password" placeholder="Password" id="password" />
           {(usernameExists)?<p style={{color:"red"}}>Brugernavnet er optaget!</p>:<p style={{color:"green"}}>Brugernavnet er ledigt!</p>}
-          {(usernameExists)?<Buttons text={"no"} className={"login-btn"} disabled={true}/>:<Buttons text={"yes"} className={"login-btn"} disabled={false} onclick={createUsr}/>}
+          {(usernameExists)?<Buttons text={"Vælg et andet brugernavn!"} className={"login-btn"} disabled={true}/>:<Buttons text={"Opret bruger"} className={"login-btn"} disabled={false} onclick={createUsr}/>}
         </form>
       </div>
     )
