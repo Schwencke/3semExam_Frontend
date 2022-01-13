@@ -1,13 +1,13 @@
 import React from 'react'
 import LogIn from "../Login";
-import RaceList from './RaceList';
+import Races from './Races';
 
 const Home = ({loggedIn,facade, setLoggedIn}) => {
     return (
         <div>
       {!loggedIn ?<LogIn facade={facade} setLoggedIn={setLoggedIn}/>: <div>
         <br/>
-        <RaceList/>
+        <Races facade={facade}/>
         </div>}
         </div>
     )
