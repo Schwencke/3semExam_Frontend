@@ -4,7 +4,8 @@ const SearchBar = ({placeholder, handleChange}) => {
         className="search" 
         type='search' 
         onChange={handleChange} 
-        placeholder={placeholder}/>
+        placeholder={placeholder}
+        />
     )
 }
 

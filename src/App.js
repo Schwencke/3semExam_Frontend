@@ -6,7 +6,7 @@ import Home from "./Components/Home";
 import "./App.css";
 import { Container } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Redirect } from "react-router-dom";
+import Overview from "./Components/Overview";
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
 
@@ -48,8 +48,10 @@ function App() {
               setLoggedIn={setLoggedIn}
             />
           </Route>
-          <Route exact path="/placeholderUSER">
-            {Facade.hasUserAccess("user", loggedIn) && <></>}
+          <Route exact path="/Overview">
+            {Facade.hasUserAccess("user", loggedIn) && 
+            <Overview
+             facade={Facade}/>}
           </Route>
           <Route exact path="/placeholderADMIN">
             {Facade.hasUserAccess("admin", loggedIn) && <></>}
