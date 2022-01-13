@@ -33,7 +33,6 @@ function App() {
 
   return (
     <Container>
-      {console.log(loggedIn)}
       <Router>
         <Header
           facade={Facade}
