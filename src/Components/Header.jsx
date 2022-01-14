@@ -20,10 +20,17 @@ function Header({facade, loggedIn, logout, login, setLoggedIn}) {
         </li>
         {facade.hasUserAccess('user', loggedIn) && (
           <li>
-            <NavLink activeClassName="active" to="/Overview">
-            Overview
+            <NavLink activeClassName="active" to="/Upcoming">
+            Upcoming events
             </NavLink>
           </li>
+        )}
+           {facade.hasUserAccess('user', loggedIn) && (
+            <li>
+              <NavLink activeClassName="active" to="/Lineup">
+              Race lineups
+              </NavLink>
+            </li>
         )}
         {facade.hasUserAccess('admin', loggedIn) && (
           <li>

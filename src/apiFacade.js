@@ -101,11 +101,19 @@ function apiFacade() {
     }
   };
 
-  const fetchData = (endpoint, updateAction) => {
+  const fetchData = async (endpoint, updateAction) => {
     const options = makeOptions("GET", true); //True add's the token
-    return fetch(URL + "/api/" + endpoint, options)
-      .then(handleHttpErrors)
-      .then((data) => updateAction(data));
+   try{
+    const res = await fetch(URL + "/api/" + endpoint, options);
+     const data = await handleHttpErrors(res);
+     return updateAction(data);
+  } catch(err){
+    if (err.status){
+      err.fullError.then((e) => alert(e.code + ": " + e.message))
+    }else{
+      alert("network error")
+    }
+  }
   };
 
   const makeOptions = (method, addToken, body) => {

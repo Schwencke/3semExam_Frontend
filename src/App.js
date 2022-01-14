@@ -6,7 +6,9 @@ import Home from "./Components/Home";
 import "./App.css";
 import { Container } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Overview from "./Components/Overview";
+import Upcoming from "./Components/Upcoming";
+import Lineup from "./Components/Lineup";
+
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
 
@@ -48,10 +50,15 @@ function App() {
               setLoggedIn={setLoggedIn}
             />
           </Route>
-          <Route exact path="/Overview">
+          <Route exact path="/Upcoming">
             {Facade.hasUserAccess("user", loggedIn) && 
-            <Overview
-             facade={Facade}/>}
+            <Upcoming
+            facade={Facade}/>}
+          </Route>
+          <Route exact path="/Lineup">
+            {Facade.hasUserAccess("user", loggedIn) && 
+            <Lineup
+            facade={Facade}/>}
           </Route>
           <Route exact path="/placeholderADMIN">
             {Facade.hasUserAccess("admin", loggedIn) && <></>}
