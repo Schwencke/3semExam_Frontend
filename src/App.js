@@ -8,6 +8,8 @@ import { Container } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Upcoming from "./Components/Upcoming";
 import Lineup from "./Components/Lineup";
+import AdminRace from "./Components/AdminRace";
+import AdminNewRace from "./Components/AdminNewRace";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -60,8 +62,11 @@ function App() {
             <Lineup
             facade={Facade}/>}
           </Route>
-          <Route exact path="/placeholderADMIN">
-            {Facade.hasUserAccess("admin", loggedIn) && <></>}
+          <Route exact path="/AdminRace">
+            {Facade.hasUserAccess("admin", loggedIn) && <AdminRace facade={Facade}/>}
+          </Route>
+          <Route exact path="/AdminNewRace">
+            {Facade.hasUserAccess("admin", loggedIn) && <AdminNewRace facade={Facade}/>}
           </Route>
         </Switch>
       </Router>

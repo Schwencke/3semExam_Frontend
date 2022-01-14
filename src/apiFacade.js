@@ -66,6 +66,23 @@ function apiFacade() {
       });
   };
 
+
+  const createNewRace = async(race, updateAction)=> {
+    const options = makeOptions("POST",false, race)
+    try{
+      return await fetch(URL + "/api/race", options)
+      .then(handleHttpErrors)
+      .then((data) => updateAction(data));
+  } catch (err) {
+    if (err.status) {
+      err.fullError.then((e) => alert(e.code + ": " + e.message));
+    } else {
+      alert("network error");
+    }
+  }
+    }
+  
+
   const createUser = async (user, password) => {
     const options = makeOptions("POST", true, {
       username: user,
@@ -152,6 +169,7 @@ function apiFacade() {
     makeOptions,
     setToken,
     getToken,
+    createNewRace,
     getUserRoles,
     hasUserAccess,
     verifyToken,

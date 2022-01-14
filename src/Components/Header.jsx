@@ -34,8 +34,15 @@ function Header({facade, loggedIn, logout, login, setLoggedIn}) {
         )}
         {facade.hasUserAccess('admin', loggedIn) && (
           <li>
-            <NavLink activeClassName="active" to="/placeholderADMIN">
-              placeholderADMIN
+            <NavLink activeClassName="active" to="/AdminRace">
+              Edit races
+            </NavLink>
+          </li>
+        )}
+        {facade.hasUserAccess('admin', loggedIn) && (
+          <li>
+            <NavLink activeClassName="active" to="/AdminNewRace">
+              Create race
             </NavLink>
           </li>
         )}
