@@ -9,7 +9,7 @@ const Home = ({loggedIn,facade, setLoggedIn}) => {
         <div>
       {!loggedIn ?<LogIn facade={facade} setLoggedIn={setLoggedIn}/>: <div>
         <br/>
-       <h1>Welcome to internaional race entutiasts</h1>
+       <h1>Welcome to international race enthutiasts</h1>
        <Card className="text-center">
   <Card.Header>News</Card.Header>
   <Card.Body>
