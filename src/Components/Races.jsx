@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import { Table } from 'react-bootstrap'
 import SearchBar from './SearchBar'
 import Checkbox from './Checkbox'
-const Races = ({facade, viewDrivers}) => {
+const Races = ({facade, viewDrivers, label}) => {
 
     const [races, setRaces] = useState([])
     const [search, setSearch] = useState("")
@@ -47,7 +47,7 @@ const Races = ({facade, viewDrivers}) => {
                 </tr>
             </thead>
         {filteredRaces.map((race) => (
-        <Race key={race.id} race={race} viewDrivers={viewDrivers}/>
+        <Race key={race.id} race={race} viewDrivers={viewDrivers} label="Show Drivers"/>
         ))}
         </Table>
         </div>

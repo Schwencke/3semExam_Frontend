@@ -66,6 +66,22 @@ function apiFacade() {
       });
   };
 
+
+  const editRace = async(race)=> {
+    const options = makeOptions("PUT",false, race)
+    try{
+      return await fetch(URL + "/api/race", options)
+      .then(handleHttpErrors)
+  } catch (err) {
+    if (err.status) {
+      err.fullError.then((e) => alert(e.code + ": " + e.message));
+    } else {
+      alert("network error");
+    }
+  }
+    }
+
+
   const addCarToRace = async(carId, raceId, updateAction)=> {
     const options = makeOptions("POST",false, {
       "carId":carId,
@@ -84,6 +100,19 @@ function apiFacade() {
   }
     }
   
+  const deleteCar = async(id)=>{
+    const options = makeOptions("DELETE",false)
+    try{
+      return await fetch(URL + "/api/car/"+id, options)
+      .then(handleHttpErrors)
+  } catch (err) {
+    if (err.status) {
+      err.fullError.then((e) => alert(e.code + ": " + e.message));
+    } else {
+      alert("network error");
+    }
+  }
+  }
 
   const createNewRace = async(race, updateAction)=> {
     const options = makeOptions("POST",false, race)
@@ -185,9 +214,11 @@ function apiFacade() {
 
   return {
     makeOptions,
+    deleteCar,
     setToken,
     getToken,
     createNewRace,
+    editRace,
     getUserRoles,
     addCarToRace,
     hasUserAccess,

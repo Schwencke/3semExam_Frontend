@@ -10,6 +10,7 @@ import Upcoming from "./Components/Upcoming";
 import Lineup from "./Components/Lineup";
 import AdminRace from "./Components/AdminRace";
 import AdminNewRace from "./Components/AdminNewRace";
+import AdminDelete from "./Components/AdminDelete";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -67,6 +68,9 @@ function App() {
           </Route>
           <Route exact path="/AdminNewRace">
             {Facade.hasUserAccess("admin", loggedIn) && <AdminNewRace facade={Facade}/>}
+          </Route>
+          <Route exact path="/AdminDeleteCar">
+            {Facade.hasUserAccess("admin", loggedIn) && <AdminDelete facade={Facade}/>}
           </Route>
         </Switch>
       </Router>

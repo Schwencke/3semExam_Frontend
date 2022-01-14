@@ -46,6 +46,13 @@ function Header({facade, loggedIn, logout, login, setLoggedIn}) {
             </NavLink>
           </li>
         )}
+        {facade.hasUserAccess('admin', loggedIn) && (
+          <li>
+            <NavLink activeClassName="active" to="/AdminDeleteCar">
+              Delete cars
+            </NavLink>
+          </li>
+        )}
         
         {(loggedIn)?<NavLink activeClassName="active" to="/" className="logout_button" onClick={logout}>Logout</NavLink>:
         <NavLink activeClassName="active" to="#" className="logout_button" onClick={handleLoginModal}>Login</NavLink>}

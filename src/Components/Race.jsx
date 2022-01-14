@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button } from 'react-bootstrap'
-const race = ({race,viewDrivers}) => {
+const race = ({race,viewDrivers,label}) => {
     return (
             <tbody>
                 <tr>
@@ -8,7 +8,7 @@ const race = ({race,viewDrivers}) => {
                     <td>{race.name} </td>
                     <td>{race.date} </td>
                     <td>{race.time} </td>
-                    <td>{race.location} <Button id={race.id} onClick={viewDrivers} variant="secondary">View drivers</Button></td>
+                    <td>{race.location} <Button id={race.id} onClick={viewDrivers} variant="secondary">{label}</Button></td>
                     
                 </tr>
             </tbody>
