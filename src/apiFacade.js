@@ -66,6 +66,24 @@ function apiFacade() {
       });
   };
 
+  const addCarToRace = async(carId, raceId, updateAction)=> {
+    const options = makeOptions("POST",false, {
+      "carId":carId,
+      "raceId":raceId
+    })
+    try{
+      return await fetch(URL + "/api/race/car", options)
+      .then(handleHttpErrors)
+      .then((data) => updateAction(data));
+  } catch (err) {
+    if (err.status) {
+      err.fullError.then((e) => alert(e.code + ": " + e.message));
+    } else {
+      alert("network error");
+    }
+  }
+    }
+  
 
   const createNewRace = async(race, updateAction)=> {
     const options = makeOptions("POST",false, race)
@@ -171,6 +189,7 @@ function apiFacade() {
     getToken,
     createNewRace,
     getUserRoles,
+    addCarToRace,
     hasUserAccess,
     verifyToken,
     createUser,
